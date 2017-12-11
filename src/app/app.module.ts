@@ -2,10 +2,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { SiteNavbarComponent } from './site-navbar/site-navbar.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SiteNavbarComponent
   ],
   imports: [
     BrowserModule
