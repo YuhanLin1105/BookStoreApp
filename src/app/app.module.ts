@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {RouterModule} from '@angular/router';
+import { RouterModule } from '@angular/router';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { SiteNavbarComponent } from './site-navbar/site-navbar.component';
@@ -30,16 +31,18 @@ import { LoginComponent } from './login/login.component';
   ],
   imports: [
     BrowserModule,
+    NgbModule.forRoot(),
     RouterModule.forRoot([
-      { path: '', component: HomeComponent},
-      { path: 'books', component: BooksComponent},
-      { path: 'shopping-cart', component: ShoppingCartComponent},
-      { path: 'check-out', component: CheckOutComponent},
-      { path: 'order-success', component: OrderSuccessComponent},
-      { path: 'login', component: LoginComponent},
-      { path: 'admin/books', component: AdminBooksComponent},
-      { path: 'admin/orders', component: AdminOrdersComponent}
+      { path: '', component: HomeComponent },
+      { path: 'books', component: BooksComponent },
+      { path: 'shopping-cart', component: ShoppingCartComponent },
+      { path: 'check-out', component: CheckOutComponent },
+      { path: 'order-success', component: OrderSuccessComponent },
+      { path: 'login', component: LoginComponent },
+      { path: 'admin/books', component: AdminBooksComponent },
+      { path: 'admin/orders', component: AdminOrdersComponent }
     ])
+
   ],
   providers: [],
   bootstrap: [AppComponent]
