@@ -11,12 +11,13 @@ import { NgForm } from '@angular/forms';
 export class LoginComponent implements OnInit {
 
   credentials: IUserLogin = {
-    grant_type: 'password',
+    // grant_type: 'password',
     username: '',
     password: ''
   };
 
   tokenResponse: ITokenApiResponse;
+  // token: string;
   constructor(private _authService: AuthService) { }
 
   ngOnInit() {
@@ -25,11 +26,11 @@ export class LoginComponent implements OnInit {
   login() {
 
     this._authService.login(this.credentials)
-      .subscribe((response: ITokenApiResponse) => {
+      .subscribe((response) => {
 
         if (response) {
-          this.tokenResponse = response;
-          // console.log(response);
+          // this.token = response;
+          console.log(response);
           // console.log(this.tokenResponse.access_token);
         }
 

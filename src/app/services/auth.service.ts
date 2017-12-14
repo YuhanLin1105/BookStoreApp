@@ -7,12 +7,12 @@ import { RequestOptions, Request, RequestMethod, Headers } from '@angular/http';
 @Injectable()
 export class AuthService {
 
-  private _authUrl = 'http://localhost:50083/oauth/token';
+  private _authUrl = 'http://localhost:57347/api/token';
   constructor(private _http: HttpClient) {
 
   }
 
-  login(userLogin: IUserLogin): Observable<ITokenApiResponse> {
+  login2(userLogin: IUserLogin): Observable<ITokenApiResponse> {
 
     const body = new URLSearchParams();
     body.set('username', userLogin.username);
@@ -23,8 +23,29 @@ export class AuthService {
     };
 
     const headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
-   // console.table(userLogin);
-     return this._http.post<ITokenApiResponse>(this._authUrl, body.toString(), options)
+    // console.table(userLogin);
+    return this._http.post<ITokenApiResponse>(this._authUrl, body.toString(), options)
+      .catch(this.handleError);
+  }
+
+  login(userLogin: IUserLogin): Observable<string> {
+
+    const body = new URLSearchParams();
+    body.set('username', userLogin.username);
+    body.set('password', userLogin.password);
+    const options = {
+      headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+    };
+    const headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+    // console.table(userLogin);
+    return this._http.post<string>(this._authUrl, body.toString(), options)
+      .map(response => {
+        if (response) {
+          localStorage.setItem('token', response);
+          return true;
+        }
+        return false;
+      })
       .catch(this.handleError);
   }
 
