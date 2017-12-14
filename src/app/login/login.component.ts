@@ -2,6 +2,7 @@ import { IUserLogin, ITokenApiResponse } from './../shared/interfaces';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { NgForm } from '@angular/forms';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -9,6 +10,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  invalidLogin: boolean;
 
   credentials: IUserLogin = {
     // grant_type: 'password',
@@ -18,7 +20,8 @@ export class LoginComponent implements OnInit {
 
   tokenResponse: ITokenApiResponse;
   // token: string;
-  constructor(private _authService: AuthService) { }
+  constructor(private router: Router,
+    private _authService: AuthService) { }
 
   ngOnInit() {
   }
@@ -30,12 +33,21 @@ export class LoginComponent implements OnInit {
 
         if (response) {
           // this.token = response;
+          this.router.navigate(['/']);
           console.log(response);
           // console.log(this.tokenResponse.access_token);
         }
 
+        // tslint:disable-next-line:one-line
+        else {
+          this.invalidLogin = true;
+
+        }
+
       },
-      (err: any) => console.log(err));
+     // (err: any) => console.log(err));
+      (err: any) => this.invalidLogin = true);
+      
     // console.table(this.credentials);
     // console.log(this.tokenResponse.access_token);
     // console.table(this.tokenResponse);
