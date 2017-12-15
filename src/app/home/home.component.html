@@ -1,21 +1,18 @@
 <h1>Home Page</h1>
 <p>
-  Welcome [NAME]
+  Welcome {{ authService.currentUser }}
 </p>
 
 
 <ul>
-  <li>
+  <li *ngIf="authService.isAdmin">
     <a routerLink="/admin">Admin</a>
   </li>
-  <li>
+  <li *ngIf="!authService.isLoggedIn()">
     <a routerLink="/login">Login</a>
   </li>
-  <li>
-    <a (click)="authService.logout()" href="" > Logout </a>
+  <li *ngIf="authService.isLoggedIn()">
+    <a (click)="authService.logout()" href=""> Logout </a>
   </li>
-  <li>
-    <a>Test Anchor</a>
-  </li>
-
+ 
 </ul>

@@ -3,10 +3,12 @@ import { Injectable, Component } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Rx';
 import { RequestOptions, Request, RequestMethod, Headers } from '@angular/http';
+import { JwtHelper, tokenNotExpired } from 'angular2-jwt';
 
 @Injectable()
 export class AuthService {
 
+  tokenResponse: ITokenApiResponse;
   private _authUrl = 'http://localhost:57347/api/token';
   constructor(private _http: HttpClient) {
 
@@ -50,10 +52,27 @@ export class AuthService {
   }
 
   logout() {
-      localStorage.removeItem('token');
+    localStorage.removeItem('token');
   }
   isLoggedIn() {
-    return false;
+
+    // global function from jwt library that looks for local storage key with 'token' and retruns bool
+    // below is the manual code
+    return tokenNotExpired();
+    // tslint:disable-next-line:prefer-const
+    // let jwtHelper = new JwtHelper();
+    // const token = localStorage.getItem('token');
+    // if (!token) {
+    //   return false;
+    // }
+
+    // const expirationDate = jwtHelper.getTokenExpirationDate(token);
+    // const isExpired = jwtHelper.isTokenExpired(token);
+
+    // console.log('Expiration:', expirationDate);
+    // console.log('Is Expired:', isExpired);
+
+    // return !isExpired;
   }
 
   private handleError(error: HttpErrorResponse) {
@@ -66,4 +85,51 @@ export class AuthService {
     }
     return Observable.throw(error || 'Server error');
   }
+
+
+  get currentUser() {
+    //   const token = localStorage.getItem('token');
+    //   if (!token) {
+    //     return null;
+    //   }
+    //   const decodedToken = new JwtHelper().decodeToken(token);
+    //   // console.log(decodedToken);
+    //   // console.table(decodedToken);
+    //   // console.log(typeof(decodedToken));
+    //   // let response =  new ITokenApiResponse();
+    //   // this.tokenResponse.unique_name = decodedToken.unique_name;
+    //   // this.tokenResponse.exp = decodedToken.exp;
+    //   // this.tokenResponse.role = Array.from(decodedToken.role);
+    //   this.tokenResponse = decodedToken;
+    //  // console.log(typeof (decodedToken.unique_name));
+    //   // console.log( (this.tokenResponse.unique_name));
+
+    //   return this.tokenResponse;
+
+    // console.log( this.decodedToken().unique_name);
+    if (this.decodedToken() != null) {
+      const username = this.decodedToken().unique_name;
+      return username;
+    }
+  }
+  private decodedToken(): ITokenApiResponse {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      return null;
+    }
+    const decodedToken = new JwtHelper().decodeToken(token);
+    this.tokenResponse = decodedToken;
+    return this.tokenResponse;
+  }
+  get isAdmin() {
+    console.log(this.decodedToken());
+    if (this.decodedToken() != null) {
+      const roles = this.decodedToken().role;
+      return roles.includes('Admin');
+    }
+
+    // console.log(roles.includes('Admin'));
+
+  }
+
 }
