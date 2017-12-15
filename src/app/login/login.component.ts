@@ -2,7 +2,7 @@ import { IUserLogin, ITokenApiResponse } from './../shared/interfaces';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { NgForm } from '@angular/forms';
-import { Router } from "@angular/router";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
       },
      // (err: any) => console.log(err));
       (err: any) => this.invalidLogin = true);
-      
+
     // console.table(this.credentials);
     // console.log(this.tokenResponse.access_token);
     // console.table(this.tokenResponse);
