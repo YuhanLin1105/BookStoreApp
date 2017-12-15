@@ -122,7 +122,7 @@ export class AuthService {
     return this.tokenResponse;
   }
   get isAdmin() {
-    console.log(this.decodedToken());
+  //  console.log(this.decodedToken());
     if (this.decodedToken() != null) {
       const roles = this.decodedToken().role;
       return roles.includes('Admin');

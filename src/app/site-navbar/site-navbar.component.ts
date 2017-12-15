@@ -1,3 +1,4 @@
+import { AuthService } from './../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -5,11 +6,10 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './site-navbar.component.html',
   styleUrls: ['./site-navbar.component.css']
 })
-export class SiteNavbarComponent implements OnInit {
+export class SiteNavbarComponent  {
 
-  constructor() { }
+  constructor( private authService: AuthService) { }
 
-  ngOnInit() {
-  }
+ 
 
 }
