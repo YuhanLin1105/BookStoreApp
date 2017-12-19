@@ -59,7 +59,6 @@ export class AuthService {
     // global function from jwt library that looks for local storage key with 'token' and retruns bool
     // below is the manual code
     return tokenNotExpired();
-    // tslint:disable-next-line:prefer-const
     // let jwtHelper = new JwtHelper();
     // const token = localStorage.getItem('token');
     // if (!token) {
@@ -108,7 +107,8 @@ export class AuthService {
 
     // console.log( this.decodedToken().unique_name);
     if (this.decodedToken() != null) {
-      const username = this.decodedToken().unique_name;
+      const decodedResponse = this.decodedToken();
+      const username = decodedResponse.firstName + ' ' + decodedResponse.lastName;
       return username;
     }
   }

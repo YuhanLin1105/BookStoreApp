@@ -9,8 +9,9 @@ export interface IUserLogin {
 }
 
 export interface ITokenApiResponse {
-    unique_name: string;
+    userName: string;
     role: Array<string>;
     exp: string;
-
+    lastName: string;
+    firstName: string;
 }
