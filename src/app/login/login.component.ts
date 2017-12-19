@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   invalidLogin: boolean;
-
+  returnUrl: string;
   credentials: IUserLogin = {
     // grant_type: 'password',
     username: '',
@@ -20,10 +21,15 @@ export class LoginComponent implements OnInit {
 
   tokenResponse: ITokenApiResponse;
   // token: string;
-  constructor(private router: Router,
-    private _authService: AuthService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private _authService: AuthService) {
+
+  }
 
   ngOnInit() {
+
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    // this.returnUrl = this.route.snapshot.queryParamMap.get('returnUrl' || '/');
+    console.log(this.returnUrl);
   }
 
   login() {
@@ -33,8 +39,10 @@ export class LoginComponent implements OnInit {
 
         if (response) {
           // this.token = response;
-          this.router.navigate(['/']);
-          console.log(response);
+          //  this.router.navigate(['/']);
+          console.log(this.returnUrl);
+          this.router.navigateByUrl(this.returnUrl);
+          // console.log(response);
           // console.log(this.tokenResponse.access_token);
         }
 
@@ -45,7 +53,7 @@ export class LoginComponent implements OnInit {
         }
 
       },
-     // (err: any) => console.log(err));
+      // (err: any) => console.log(err));
       (err: any) => this.invalidLogin = true);
 
     // console.table(this.credentials);

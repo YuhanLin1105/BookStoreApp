@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { IUserLogin, ITokenApiResponse } from './../shared/interfaces';
 import { Injectable, Component } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
@@ -10,7 +11,7 @@ export class AuthService {
 
   tokenResponse: ITokenApiResponse;
   private _authUrl = 'http://localhost:57347/api/token';
-  constructor(private _http: HttpClient) {
+  constructor(private _http: HttpClient, private route: ActivatedRoute) {
 
   }
 
