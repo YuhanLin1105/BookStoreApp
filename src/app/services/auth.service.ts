@@ -126,6 +126,12 @@ export class AuthService {
   //  console.log(this.decodedToken());
     if (this.decodedToken() != null) {
       const roles = this.decodedToken().role;
+
+      // if (roles.includes('Admin'))
+      // // tslint:disable-next-line:one-line
+      // {
+      //   this.tokenResponse.isAdmin = true;
+      // }
       return roles.includes('Admin');
     }
 

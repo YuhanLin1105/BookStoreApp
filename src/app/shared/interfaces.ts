@@ -14,4 +14,10 @@ export interface ITokenApiResponse {
     exp: string;
     lastName: string;
     firstName: string;
+    isAdmin: boolean;
+}
+
+export interface ICategory {
+    id: number;
+    name: string;
 }

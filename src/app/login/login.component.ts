@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
         if (response) {
           // this.token = response;
           //  this.router.navigate(['/']);
-          console.log(this.returnUrl);
+         // console.log(this.returnUrl);
           this.router.navigateByUrl(this.returnUrl);
           // console.log(response);
           // console.log(this.tokenResponse.access_token);
