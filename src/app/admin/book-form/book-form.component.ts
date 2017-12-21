@@ -1,4 +1,6 @@
-import { ICategory } from './../../shared/interfaces';
+import { Book } from './../../shared/Book';
+import { Category } from './../../shared/Category';
+
 import { CategoryService } from './../../services/category.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -9,8 +11,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BookFormComponent implements OnInit {
 
-  categories: ICategory[];
-
+  categories: Category[];
+  private book: Book;
   constructor(private categoryService: CategoryService) { }
 
   ngOnInit() {
@@ -24,5 +26,7 @@ export class BookFormComponent implements OnInit {
 
       console.table(this.categories);
   }
+  submitBook() {
 
+  }
 }

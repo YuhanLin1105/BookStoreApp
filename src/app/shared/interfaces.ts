@@ -17,22 +17,23 @@ export interface ITokenApiResponse {
     isAdmin: boolean;
 }
 
-export interface ICategory {
-    id: number;
-    name: string;
-}
-export interface IBook {
-    title: string;
-    description: string;
-    price: number;
-    copies: 35;
-    edition: 3;
-    isbn: string;
-    url: string;
-    authorId: number;
-    publishedDate: Date;
-    pages: number;
-    publishingCompany: string;
-    rating: number;
-    categories: Array<number>;
-}
+// export interface ICategory {
+//     id: number;
+//     name: string;
+//     isChecked: boolean;
+// }
+// export interface IBook {
+//     title: string;
+//     description: string;
+//     price: number;
+//     copies: 35;
+//     edition: 3;
+//     isbn: string;
+//     url: string;
+//     authorId: number;
+//     publishedDate: Date;
+//     pages: number;
+//     publishingCompany: string;
+//     rating: number;
+//     categories: Array<number>;
+// }
