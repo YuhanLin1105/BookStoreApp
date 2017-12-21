@@ -8,7 +8,7 @@ export interface IBook {
     isbn: string;
     url: string;
     authorId: number;
-    publishedDate: number;
+    publishedDate: string;
     pages: number;
     publishingCompany: string;
     rating: number;

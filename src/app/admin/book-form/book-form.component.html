@@ -27,7 +27,7 @@
   </div>
   <div class="form-group">
     <label for="publishedDate" class="font-weight-bold">Published Date</label>
-    <input class="form-control" type="number" [(ngModel)]="book.publishedDate" name="publishedDate" id="publishedDate" placeholder="Enter published date">
+    <input class="form-control" type="datetime" [(ngModel)]="book.publishedDate" name="publishedDate" id="publishedDate" placeholder="Enter published date">
   </div>
   <div class="form-group">
     <label for="pages" class="font-weight-bold">Pages</label>
@@ -64,5 +64,5 @@
   <button type="submit" class="btn btn-primary">Save</button>
 </form>
 <br>
-{{ book | json }} <br><br><br>
-{{ categories | json }}
+<!-- {{ book | json }} <br><br><br>
+{{ categories | json }} -->

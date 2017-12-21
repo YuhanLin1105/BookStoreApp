@@ -1,3 +1,4 @@
+import { BookService } from './../../services/book.service';
 import { IBook } from './../../shared/Book';
 import { ICategory } from './../../shared/Category';
 
@@ -27,8 +28,8 @@ export class BookFormComponent implements OnInit {
     rating: null,
     categories: []
   };
-
-  constructor(private categoryService: CategoryService) { }
+  insertSuccess: string;
+  constructor(private categoryService: CategoryService, private bookService: BookService) { }
 
   ngOnInit() {
     this.categoryService.getCategories()
@@ -45,7 +46,11 @@ export class BookFormComponent implements OnInit {
   }
   submitBook() {
      this.book.categories = this.selectedOptions;
-     console.table(this.book);
+     this.bookService.insertBook(this.book)
+     .subscribe(
+        s => { this.insertSuccess = s.title; }
+     );
+     console.table(this.insertSuccess);
   }
 
   get selectedOptions() {

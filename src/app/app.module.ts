@@ -21,6 +21,8 @@ import { AuthService } from './services/auth.service';
 import { AuthGuard } from './auth-guard.service';
 import { BookFormComponent } from './admin/book-form/book-form.component';
 import { CategoryService } from './services/category.service';
+import { BookService } from './services/book.service';
+
 // import { IUserLogin, ITokenApiResponse, ICategory, Book } from './shared/interfaces';
 
 @NgModule({
@@ -63,7 +65,8 @@ import { CategoryService } from './services/category.service';
     AuthService,
     AuthGuard,
     AdminAuthGuard,
-    CategoryService
+    CategoryService,
+    BookService
   ],
   bootstrap: [AppComponent]
 })
