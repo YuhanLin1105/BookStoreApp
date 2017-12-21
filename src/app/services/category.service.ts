@@ -1,6 +1,6 @@
 import { ActivatedRoute } from '@angular/router';
 import { IUserLogin, ITokenApiResponse } from './../shared/interfaces';
-import { Category } from './../shared/Category';
+import { ICategory } from './../shared/Category';
 import { Injectable, Component } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Rx';
@@ -13,12 +13,12 @@ export class CategoryService {
   private _categoryUrl = 'http://localhost:57347/api/categories';
   constructor(private _http: HttpClient) { }
 
-  getCategories(): Observable<Category[]> {
+  getCategories(): Observable<ICategory[]> {
     const options = {
       headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
     };
-     return this._http.get<Category[]>(this._categoryUrl, options)
-        .do( data => console.table(data))
+     return this._http.get<ICategory[]>(this._categoryUrl, options)
+       // .do( data => console.table(data))
         .catch(this.handleError) ;
   }
 

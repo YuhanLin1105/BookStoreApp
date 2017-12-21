@@ -1,16 +1,16 @@
-import { Category } from './Category';
-export class Book {
+import { ICategory } from './Category';
+export interface IBook {
     title: string;
     description: string;
     price: number;
-    copies: 35;
-    edition: 3;
+    copies: number;
+    edition: number;
     isbn: string;
     url: string;
     authorId: number;
-    publishedDate: Date;
+    publishedDate: number;
     pages: number;
     publishingCompany: string;
     rating: number;
-    categories: Category[];
+    categories: ICategory[];
 }
