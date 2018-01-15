@@ -1,7 +1,10 @@
+import { Observable } from 'rxjs/Rx';
 import { BookService } from './../../services/book.service';
 import { IBook } from './../../shared/Book';
 import { ICategory } from './../../shared/Category';
-
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/map';
 import { CategoryService } from './../../services/category.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -11,8 +14,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./book-form.component.css']
 })
 export class BookFormComponent implements OnInit {
+  public model: any;
 
+  search = (text$: Observable<string>) =>
+    text$
+      .debounceTime(200)
+      .distinctUntilChanged()
+      .map(term => term.length < 2 ? []
+        : this.categories.filter(v => v.name.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10))
+
+   formatter = (x: { name: string }) => x.name;
+
+  // tslint:disable-next-line:member-ordering
   categories: ICategory[];
+  // tslint:disable-next-line:member-ordering
   book: IBook = {
     title: '',
     description: '',
@@ -45,12 +60,12 @@ export class BookFormComponent implements OnInit {
 
   }
   submitBook() {
-     this.book.categories = this.selectedOptions;
-     this.bookService.insertBook(this.book)
-     .subscribe(
-        s => { this.insertSuccess = s.title; }
-     );
-     console.table(this.insertSuccess);
+    this.book.categories = this.selectedOptions;
+    this.bookService.insertBook(this.book)
+      .subscribe(
+      s => { this.insertSuccess = s.title; }
+      );
+    console.table(this.insertSuccess);
   }
 
   get selectedOptions() {
