@@ -10,7 +10,7 @@ import { JwtHelper, tokenNotExpired } from 'angular2-jwt';
 export class AuthService {
 
   tokenResponse: ITokenApiResponse;
-  private _authUrl = 'http://localhost:57347/api/token';
+  private _authUrl = 'http://localhost/api/token';
   constructor(private _http: HttpClient, private route: ActivatedRoute) {
 
   }
