@@ -1,3 +1,4 @@
+import { AuthorService } from './services/author.service';
 import { AdminAuthGuard } from './admin-auth-guard.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserModule } from '@angular/platform-browser';
@@ -22,8 +23,8 @@ import { AuthGuard } from './auth-guard.service';
 import { BookFormComponent } from './admin/book-form/book-form.component';
 import { CategoryService } from './services/category.service';
 import { BookService } from './services/book.service';
+import { OrderService } from './services/order.service';
 
-// import { IUserLogin, ITokenApiResponse, ICategory, Book } from './shared/interfaces';
 
 @NgModule({
   declarations: [
@@ -55,8 +56,8 @@ import { BookService } from './services/book.service';
       { path: 'ordersuccess', component: OrderSuccessComponent, canActivate: [AuthGuard] },
       { path: 'my/orders', component: MyOrdersComponent, canActivate: [AuthGuard] },
 
-      { path: 'admin/books/new', component: BookFormComponent, canActivate: [AuthGuard, AdminAuthGuard]  },
-      { path: 'admin/books', component: AdminBooksComponent, canActivate: [AuthGuard, AdminAuthGuard]  },
+      { path: 'admin/books/new', component: BookFormComponent, canActivate: [AuthGuard, AdminAuthGuard] },
+      { path: 'admin/books', component: AdminBooksComponent, canActivate: [AuthGuard, AdminAuthGuard] },
       { path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuard, AdminAuthGuard] }
     ])
 
@@ -66,7 +67,9 @@ import { BookService } from './services/book.service';
     AuthGuard,
     AdminAuthGuard,
     CategoryService,
-    BookService
+    BookService,
+    OrderService,
+    AuthorService
   ],
   bootstrap: [AppComponent]
 })

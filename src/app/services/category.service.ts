@@ -10,7 +10,7 @@ import { JwtHelper, tokenNotExpired } from 'angular2-jwt';
 
 @Injectable()
 export class CategoryService {
-  private _categoryUrl = 'http://localhost:57347/api/categories';
+  private _categoryUrl = 'http://localhost/api/categories';
   constructor(private _http: HttpClient) { }
 
   getCategories(): Observable<ICategory[]> {
