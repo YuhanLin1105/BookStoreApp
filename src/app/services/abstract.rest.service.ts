@@ -1,5 +1,5 @@
+import { NotFoundError } from './../shared/not.found.error';
 import { BadInputError } from './../shared/bad.input.error';
-import { NotFoundError } from './../shared/not-found-error';
 import { AppError } from './../shared/app.error';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Rx';
