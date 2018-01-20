@@ -4,7 +4,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
@@ -24,6 +25,7 @@ import { BookFormComponent } from './admin/book-form/book-form.component';
 import { CategoryService } from './services/category.service';
 import { BookService } from './services/book.service';
 import { OrderService } from './services/order.service';
+import { CategoryComponent } from './categories/category.component';
 
 
 @NgModule({
@@ -39,12 +41,14 @@ import { OrderService } from './services/order.service';
     AdminBooksComponent,
     AdminOrdersComponent,
     LoginComponent,
-    BookFormComponent
+    BookFormComponent,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    HttpModule,
     NgbModule.forRoot(),
     RouterModule.forRoot([
       { path: '', component: HomeComponent },

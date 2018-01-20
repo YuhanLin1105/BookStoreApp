@@ -23,7 +23,7 @@ export class BookFormComponent implements OnInit {
       .map(term => term.length < 2 ? []
         : this.categories.filter(v => v.name.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10))
 
-   formatter = (x: { name: string }) => x.name;
+  formatter = (x: { name: string }) => x.name;
 
   // tslint:disable-next-line:member-ordering
   categories: ICategory[];
@@ -47,7 +47,7 @@ export class BookFormComponent implements OnInit {
   constructor(private categoryService: CategoryService, private bookService: BookService) { }
 
   ngOnInit() {
-    this.categoryService.getCategories()
+    this.categoryService.getAll()
       .subscribe(
       categories => {
         this.categories = categories;
