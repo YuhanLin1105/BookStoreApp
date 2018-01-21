@@ -43,7 +43,8 @@ import { NotFoundComponent } from './shared/not-found.component';
     AdminOrdersComponent,
     LoginComponent,
     BookFormComponent,
-    CategoryComponent
+    CategoryComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
