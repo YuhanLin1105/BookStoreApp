@@ -1,6 +1,6 @@
+import { IBook } from './../../shared/Book';
 import { Observable } from 'rxjs/Rx';
 import { BookService } from './../../services/book.service';
-import { IBook } from './../../shared/Book';
 import { ICategory } from './../../shared/Category';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
@@ -29,6 +29,7 @@ export class BookFormComponent implements OnInit {
   categories: ICategory[];
   // tslint:disable-next-line:member-ordering
   book: IBook = {
+    id: 0,
     title: '',
     description: '',
     price: null,
@@ -43,6 +44,7 @@ export class BookFormComponent implements OnInit {
     rating: null,
     categories: []
   };
+  // tslint:disable-next-line:member-ordering
   insertSuccess: string;
   constructor(private categoryService: CategoryService, private bookService: BookService) { }
 

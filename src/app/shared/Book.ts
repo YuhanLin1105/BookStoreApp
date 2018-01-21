@@ -1,3 +1,4 @@
+import { IAuthor } from './Author';
 import { ICategory } from './Category';
 export interface IBook {
     title: string;
@@ -7,10 +8,11 @@ export interface IBook {
     edition: number;
     isbn: string;
     url: string;
-    authorId: number;
+    author: IAuthor;
     publishedDate: string;
     pages: number;
     publishingCompany: string;
     rating: number;
     categories: ICategory[];
+    id: number;
 }
