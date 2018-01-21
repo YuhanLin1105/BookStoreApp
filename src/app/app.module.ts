@@ -27,6 +27,7 @@ import { BookService } from './services/book.service';
 import { OrderService } from './services/order.service';
 import { CategoryComponent } from './categories/category.component';
 import { NotFoundComponent } from './shared/not-found.component';
+import { BooksFilterComponent } from './books/books-filter.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { NotFoundComponent } from './shared/not-found.component';
     LoginComponent,
     BookFormComponent,
     CategoryComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    BooksFilterComponent
   ],
   imports: [
     BrowserModule,

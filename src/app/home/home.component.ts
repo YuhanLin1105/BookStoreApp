@@ -1,5 +1,4 @@
 import { ActivatedRoute } from '@angular/router';
-import { CategoryService } from './../services/category.service';
 import { IBook } from './../shared/Book';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
@@ -14,20 +13,13 @@ import { ICategory } from '../shared/Category';
 export class HomeComponent implements OnInit {
   books: IBook[] = [];
   filteredBooks: IBook[];
-  categories: ICategory[];
   categoryId: string;
 
   ngOnInit() {
-
-    let test = this.route.params.subscribe(params => {
-      const term = params['categoryId'];
-      console.log(term);
-    //  this.service.get(term).then(result => { console.log(result); });
-    });
   }
 
   // Inject activatedroute so that we can read route parameters
-  constructor(private route: ActivatedRoute, private bookService: BookService, private categoryService: CategoryService) {
+  constructor(private route: ActivatedRoute, private bookService: BookService) {
     this.bookService.getAll()
       .subscribe(
       books => {
@@ -39,8 +31,9 @@ export class HomeComponent implements OnInit {
             this.bookService.getBooksByCategory(this.categoryId)
               .subscribe(
               filteredbooks => {
-              //  console.log(this.categoryId);
+                //  console.log(this.categoryId);
                 this.books = (this.categoryId != null) ? filteredbooks : this.books;
+                console.log('Home componet Category: ' + this.categoryId);
               }
               );
           }
@@ -48,12 +41,7 @@ export class HomeComponent implements OnInit {
       }
       );
 
-    this.categoryService.getAll()
-      .subscribe(
-      categories => {
-        this.categories = categories;
-      }
-      );
+
   }
 
 }
