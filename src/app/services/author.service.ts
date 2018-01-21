@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { IAuthor } from './../shared/interfaces';
 import { Injectable } from '@angular/core';
 import { AbstractRestService } from './abstract.rest.service';
+import { IAuthor } from '../shared/Author';
 
 @Injectable()
 export class AuthorService extends AbstractRestService<IAuthor> {

@@ -37,7 +37,7 @@ export class BookFormComponent implements OnInit {
     edition: null,
     isbn: '',
     url: '',
-    authorId: null,
+    author: null,
     publishedDate: null,
     pages: null,
     publishingCompany: '',
