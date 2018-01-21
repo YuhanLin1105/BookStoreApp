@@ -18,6 +18,11 @@ export class BookService extends AbstractRestService<IBook>  {
 
   }
 
+  getBooksByCategory(categoryId: string): Observable<IBook[]> {
+    return this._http.get<IBook[]>(this._bookUrl + '/category/' + categoryId);
+  }
+
+
   insertBook(book: IBook): Observable<IBook> {
     const options = {
       headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
