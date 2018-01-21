@@ -26,6 +26,7 @@ import { CategoryService } from './services/category.service';
 import { BookService } from './services/book.service';
 import { OrderService } from './services/order.service';
 import { CategoryComponent } from './categories/category.component';
+import { NotFoundComponent } from './shared/not-found.component';
 
 
 @NgModule({
@@ -62,7 +63,8 @@ import { CategoryComponent } from './categories/category.component';
 
       { path: 'admin/books/new', component: BookFormComponent, canActivate: [AuthGuard, AdminAuthGuard] },
       { path: 'admin/books', component: AdminBooksComponent, canActivate: [AuthGuard, AdminAuthGuard] },
-      { path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuard, AdminAuthGuard] }
+      { path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuard, AdminAuthGuard] },
+      { path: '**', component: NotFoundComponent }
     ])
 
   ],
