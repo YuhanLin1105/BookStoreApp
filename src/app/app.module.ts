@@ -74,6 +74,7 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 
       { path: 'admin/books/new', component: BookFormComponent, canActivate: [AuthGuard, AdminAuthGuard] },
       { path: 'admin/books/:bookid', component: AdminBookDetailsComponent, canActivate: [AuthGuard, AdminAuthGuard] },
+      // { path: 'admin/books/:booktitle/:bookid', component: AdminBookDetailsComponent, canActivate: [AuthGuard, AdminAuthGuard] },
       { path: 'admin/books', component: AdminBooksComponent, canActivate: [AuthGuard, AdminAuthGuard] },
       { path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuard, AdminAuthGuard] },
       { path: '**', component: NotFoundComponent }
