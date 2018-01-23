@@ -28,6 +28,9 @@ import { OrderService } from './services/order.service';
 import { CategoryComponent } from './categories/category.component';
 import { NotFoundComponent } from './shared/not-found.component';
 import { BooksFilterComponent } from './books/books-filter.component';
+import { AdminBookDetailsComponent } from './admin/admin-book-details.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 
 @NgModule({
@@ -46,7 +49,10 @@ import { BooksFilterComponent } from './books/books-filter.component';
     BookFormComponent,
     CategoryComponent,
     NotFoundComponent,
-    BooksFilterComponent
+    BooksFilterComponent,
+    AdminBookDetailsComponent,
+    AboutUsComponent,
+    ContactUsComponent
   ],
   imports: [
     BrowserModule,
@@ -60,11 +66,14 @@ import { BooksFilterComponent } from './books/books-filter.component';
       { path: 'login', component: LoginComponent },
       { path: 'shoppingcart', component: ShoppingCartComponent },
 
+      { path: 'about', component: AboutUsComponent },
+      { path: 'contact', component: ContactUsComponent },
       { path: 'checkout', component: CheckOutComponent, canActivate: [AuthGuard] },
       { path: 'ordersuccess', component: OrderSuccessComponent, canActivate: [AuthGuard] },
       { path: 'my/orders', component: MyOrdersComponent, canActivate: [AuthGuard] },
 
       { path: 'admin/books/new', component: BookFormComponent, canActivate: [AuthGuard, AdminAuthGuard] },
+      { path: 'admin/books/:bookid', component: AdminBookDetailsComponent, canActivate: [AuthGuard, AdminAuthGuard] },
       { path: 'admin/books', component: AdminBooksComponent, canActivate: [AuthGuard, AdminAuthGuard] },
       { path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuard, AdminAuthGuard] },
       { path: '**', component: NotFoundComponent }
