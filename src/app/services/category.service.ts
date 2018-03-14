@@ -11,9 +11,9 @@ import { AbstractRestService } from './abstract.rest.service';
 
 @Injectable()
 export class CategoryService extends AbstractRestService<ICategory> {
-  private _categoryUrl = 'http://localhost/api/categories';
+  private _categoryUrl = 'http://localhost:57347/api/categories';
   constructor( _http: HttpClient) {
-    super(_http, 'http://localhost/api/categories');
+    super(_http, 'http://localhost:57347/api/categories');
   }
 
   // getCategories(): Observable<ICategory[]> {

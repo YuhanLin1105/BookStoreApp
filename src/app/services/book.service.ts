@@ -12,9 +12,9 @@ import { AbstractRestService } from './abstract.rest.service';
 @Injectable()
 export class BookService extends AbstractRestService<IBook>  {
 
-  private _bookUrl = 'http://localhost/api/books';
+  private _bookUrl = 'http://localhost:57347/api/books';
   constructor(_http: HttpClient) {
-    super(_http, 'http://localhost/api/books');
+    super(_http, 'http://localhost:57347/api/books');
 
   }
 
